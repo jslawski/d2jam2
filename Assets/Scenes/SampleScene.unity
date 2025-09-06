@@ -532,6 +532,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.127}
+--- !u!54 &1771829971 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8402829499540972737, guid: b2d0b0a41b06a534ca63a77f522c35f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2061421621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2061421621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,7 +554,7 @@ PrefabInstance:
     - target: {fileID: 1711271607846191613, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1839289033766556726, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
@@ -603,22 +609,42 @@ PrefabInstance:
     - target: {fileID: 3204896993742542328, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4032275384699838255, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4403933004830505696, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100854203383385538, guid: b2d0b0a41b06a534ca63a77f522c35f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744046534950767334, guid: b2d0b0a41b06a534ca63a77f522c35f4,
+        type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 1771829971}
+    - target: {fileID: 8744046534950767334, guid: b2d0b0a41b06a534ca63a77f522c35f4,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -1.1783695e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744046534950767334, guid: b2d0b0a41b06a534ca63a77f522c35f4,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.000000029802322
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744046534950767334, guid: b2d0b0a41b06a534ca63a77f522c35f4,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -4.656613e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
