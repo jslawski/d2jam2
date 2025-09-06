@@ -18,10 +18,6 @@ public class TargetController : MonoBehaviour
     [SerializeField]
     private float _maxZDistance = 5.0f;
 
-    
-    [SerializeField]
-    private Transform _ragdollPartTransform;
-
     private Transform _targetTransform;
 
     private float _minViewportDiff = 0.05f;
@@ -53,6 +49,8 @@ public class TargetController : MonoBehaviour
     
     private IEnumerator ManipulateTarget()
     {
+        yield return new WaitForEndOfFrame();
+    
         Vector3 initialMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         Vector3 updatedMousePosition = initialMousePosition;
 
@@ -77,7 +75,7 @@ public class TargetController : MonoBehaviour
 
             this._targetTransform.position = new Vector3(newX, newY, newZ);
 
-            yield return null;
+            yield return new WaitForEndOfFrame();
 
             updatedMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
