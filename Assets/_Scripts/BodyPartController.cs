@@ -15,10 +15,16 @@ public class BodyPartController : MonoBehaviour
     protected Vector3 initialMousePosition;
     protected Vector3 updatedMousePosition;
 
+    private Vector3 _startingPosition;
+    private Vector3 _startingRotation;
+    [SerializeField]
+    private Transform _bodyPartTransform;
 
     private void Awake()
     {
         this.targetTransform = GetComponent<Transform>();
+        this._startingPosition = this.targetTransform.position;
+        this._startingRotation = this.targetTransform.rotation.eulerAngles;
     }
 
     protected virtual void Update()
@@ -62,5 +68,12 @@ public class BodyPartController : MonoBehaviour
     protected float GetNormalizedY()
     {
         return (Mathf.Abs(this.GetDiffVector().y / this.maxViewportDiff));
+    }
+
+    public void ResetBodyPart()
+    {
+        this._bodyPartTransform.position = this._startingPosition;
+        this._bodyPartTransform.rotation = Quaternion.Euler(this._startingRotation);
+        this.targetTransform.position = this._startingPosition;
     }
 }
