@@ -7,8 +7,8 @@ public class HipsController : BodyPartController
     private float _maxXPosition = 0.4f;
     private float _minYPosition = 1.3f;
     private float _maxYPosition = 1.86f;
-    private float _maxZPosition = 0.5f;
-
+    private float _maxZPosition = 0.5f;    
+    
     protected override IEnumerator ManipulateTarget()
     {
         yield return new WaitForEndOfFrame();

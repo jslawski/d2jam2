@@ -27,16 +27,33 @@ public class TargetController : BodyPartController
         while (Input.GetKey(this.targetKeycode))
         {
             //Calculate XY Position
-            float newX = this.CalculateXPosition();
-            float newY = this.CalculateYPosition();
-            float newZ = this.CalculateZPosition();
+            //float newX = this.CalculateXPosition();
+            //float newY = this.CalculateYPosition();
+            //float newZ = this.CalculateZPosition();
 
-            this.targetTransform.position = new Vector3(newX, newY, newZ);
+            this.targetTransform.position = this.CalculateNewPosition();
+
+
+            //this.targetTransform.position = new Vector3(newX, newY, newZ);
+
+
 
             yield return new WaitForEndOfFrame();
 
             this.updatedMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
+    }
+
+    private Vector3 CalculateNewPosition()
+    {
+        Vector3 extentsVector = this.GetPositionExtentsInDiffVectorDirection(this._maxXYDistance, this._maxXYDistance);
+
+        Vector3 newPosition = Vector3.Lerp(this.startingPosition, extentsVector, this.GetNormalizedViewportDiff());
+
+        Debug.LogError("Starting Position: " + this.startingPosition + "\nExtents Vector: " + extentsVector + 
+        "\nCurrent Viewport Diff: " + this.GetCurrentViewportDiff() + "\nNormalized Viewport Diff: " + this.GetNormalizedViewportDiff());
+
+        return newPosition;
     }
 
     private float CalculateXPosition()
