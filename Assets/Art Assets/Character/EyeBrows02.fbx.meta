@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09f3c3b8a272d2f409ed488c6e2a055c
+guid: 0931d4c971e7f184dbbd1bfb0ee3d301
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: openPBR_shader1
-    second: {fileID: 2100000, guid: 72689bf52294dd3418f4eb8c79207d50, type: 2}
+      name: EyeBrows
+    second: {fileID: 2100000, guid: 544253f8ba32a5249ad6de4526e57c23, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
