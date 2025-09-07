@@ -532,7 +532,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45.127}
---- !u!1001 &1890331238
+--- !u!1001 &1971432861
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -540,15 +540,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1119264894397815496, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
+    - target: {fileID: 1544206596858461747, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
         type: 3}
-      propertyPath: _maxZDistance
-      value: 5
+      propertyPath: _maxXAngle
+      value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 1119264894397815496, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
+    - target: {fileID: 1544206596858461747, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
         type: 3}
-      propertyPath: _maxXYDistance
-      value: 5
+      propertyPath: _maxZAngle
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2627031767960172936, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
         type: 3}
@@ -600,25 +600,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3248622224146581632, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3248622224146581632, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
-        type: 3}
-      propertyPath: _maxZDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3248622224146581632, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
-        type: 3}
-      propertyPath: _maxXYDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3255915119018540288, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
         type: 3}
       propertyPath: m_Name
-      value: Test3
+      value: THISISOURBOY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -633,4 +618,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1676816278}
-  - {fileID: 1890331238}
+  - {fileID: 1971432861}

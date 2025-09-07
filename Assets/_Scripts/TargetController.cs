@@ -11,7 +11,6 @@ public class TargetController : MonoBehaviour
 
     [SerializeField]
     private float _maxXYDistance = 5.0f;
-    private Vector3 _maxDistanceVector;
 
     [SerializeField]
     private float _minZDistance = 0.0f;
@@ -31,7 +30,6 @@ public class TargetController : MonoBehaviour
     private void Awake()
     {
         this._targetTransform = GetComponent<Transform>();
-        this._maxDistanceVector = new Vector3(this._maxXYDistance, this._maxXYDistance, 0.0f);
         this._defaultPosition = this._targetTransform.position;
     }
 
