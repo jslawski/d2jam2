@@ -4,11 +4,8 @@ using UnityEngine;
 
 public enum LimbSide { Left = -1, Right = 1 }
 
-public class TargetController : MonoBehaviour
+public class TargetController : BodyPartController
 {
-    [SerializeField]
-    private KeyCode _targetKeycode;
-
     [SerializeField]
     private float _maxXYDistance = 5.0f;
 
@@ -17,76 +14,36 @@ public class TargetController : MonoBehaviour
     [SerializeField]
     private float _maxZDistance = 5.0f;
 
-    private Transform _targetTransform;
-
-    private float _minViewportDiff = 0.05f;
-    private float _maxViewportDiff = 0.5f;
-
     [SerializeField]
     private LimbSide _limbSide;
-
-    private Vector3 _defaultPosition;
-
-    private void Awake()
-    {
-        this._targetTransform = GetComponent<Transform>();
-        this._defaultPosition = this._targetTransform.position;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(this._targetKeycode))
-        {
-            StartCoroutine(this.ManipulateTarget());
-        }
-    }
     
-    private IEnumerator ManipulateTarget()
+    protected override IEnumerator ManipulateTarget()
     {
         yield return new WaitForEndOfFrame();
     
-        Vector3 initialMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 updatedMousePosition = initialMousePosition;
+        this.initialMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        this.updatedMousePosition = initialMousePosition;
 
-//        Debug.LogError("Initial Mouse Position: \n" + "ScreenSpace: " + Input.mousePosition + "\n" + "ViewportSpace: " + initialMousePosition);
-
-        while (Input.GetKey(this._targetKeycode))
+        while (Input.GetKey(this.targetKeycode))
         {
-            float currentViewportDiff = Mathf.Clamp(Vector3.Distance(updatedMousePosition, initialMousePosition), 0.0f, this._maxViewportDiff);
-
-            if (currentViewportDiff > this._minViewportDiff)
-            {                 
-                currentViewportDiff = Mathf.Clamp(Vector3.Distance(updatedMousePosition, initialMousePosition), 0.0f, this._maxViewportDiff);
-            }
-            Vector3 diffVector = (updatedMousePosition - initialMousePosition);
-            float normalizedX = Mathf.Abs(diffVector.x / this._maxViewportDiff);
-            float normalizedY = Mathf.Abs(diffVector.y / this._maxViewportDiff);
-
             //Calculate XY Position
-            float newX = this.CalculateXPosition(diffVector.normalized, normalizedX);
-            float newY = this.CalculateYPosition(diffVector.normalized, normalizedY);
-            float newZ = this.CalculateZPosition(diffVector.normalized, normalizedX);
+            float newX = this.CalculateXPosition();
+            float newY = this.CalculateYPosition();
+            float newZ = this.CalculateZPosition();
 
-            this._targetTransform.position = new Vector3(newX, newY, newZ);
+            this.targetTransform.position = new Vector3(newX, newY, newZ);
 
             yield return new WaitForEndOfFrame();
 
-            updatedMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            this.updatedMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
     }
 
-    private float CalculateXPosition(Vector3 normalizedDirection, float normalizedX)
+    private float CalculateXPosition()
     {
-        float diffAmount = Mathf.Lerp(0.0f, this._maxXYDistance, normalizedX);
+        float diffAmount = Mathf.Lerp(0.0f, this._maxXYDistance, this.GetNormalizedX());
         
-        if (normalizedDirection.x > 0.0f)
+        if (this.GetDiffVector().x > 0.0f)
         {
             diffAmount *= -1.0f;
         }
@@ -94,11 +51,11 @@ public class TargetController : MonoBehaviour
         return diffAmount;
     }
 
-    private float CalculateYPosition(Vector3 normalizedDirection, float normalizedY)
+    private float CalculateYPosition()
     {
-        float diffAmount = Mathf.Lerp(0.0f, this._maxXYDistance, normalizedY);
+        float diffAmount = Mathf.Lerp(0.0f, this._maxXYDistance, this.GetNormalizedY());
 
-        if (normalizedDirection.y < 0.0f)
+        if (this.GetDiffVector().y < 0.0f)
         {
             diffAmount *= -1.0f;
         }
@@ -106,34 +63,34 @@ public class TargetController : MonoBehaviour
         return diffAmount;
     }
 
-    private float CalculateZPosition(Vector3 normalizedDirection, float normalizedX)
+    private float CalculateZPosition()
     {
         //Calculate Z Position
         if (this._limbSide == LimbSide.Left)
         {
-            if (normalizedDirection.x > 0.0f)
+            if (this.GetDiffVector().x > 0.0f)
             {
-                return Mathf.Lerp(this._minZDistance, this._maxZDistance, normalizedX);
+                return Mathf.Lerp(this._minZDistance, this._maxZDistance, this.GetNormalizedX());
 
             }
-            else if (normalizedDirection.x < 0.0f)
+            else if (this.GetDiffVector().x < 0.0f)
             {
-                return Mathf.Lerp(this._minZDistance, this._maxZDistance, normalizedX);
+                return Mathf.Lerp(this._minZDistance, this._maxZDistance, this.GetNormalizedX());
             }
         }
         else if (this._limbSide == LimbSide.Right)
         {
-            if (normalizedDirection.x > 0.0f)
+            if (this.GetDiffVector().x > 0.0f)
             {
-                return Mathf.Lerp(this._minZDistance, this._maxZDistance, normalizedX);
+                return Mathf.Lerp(this._minZDistance, this._maxZDistance, this.GetNormalizedX());
 
             }
-            else if (normalizedDirection.x < 0.0f)
+            else if (this.GetDiffVector().x < 0.0f)
             {
-                return Mathf.Lerp(this._minZDistance, this._maxZDistance, normalizedX);
+                return Mathf.Lerp(this._minZDistance, this._maxZDistance, this.GetNormalizedX());
             }
         }
 
-        return this._targetTransform.position.z;
+        return this.targetTransform.position.z;
     }
 }
