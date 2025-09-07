@@ -53,8 +53,6 @@ namespace DitzelGames.FastIK
         void Awake()
         {
             Init();
-
-            Application.targetFrameRate = 60;
         }
 
         void Init()

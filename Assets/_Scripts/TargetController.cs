@@ -26,10 +26,13 @@ public class TargetController : MonoBehaviour
     [SerializeField]
     private LimbSide _limbSide;
 
+    private Vector3 _defaultPosition;
+
     private void Awake()
     {
         this._targetTransform = GetComponent<Transform>();
         this._maxDistanceVector = new Vector3(this._maxXYDistance, this._maxXYDistance, 0.0f);
+        this._defaultPosition = this._targetTransform.position;
     }
 
     // Start is called before the first frame update

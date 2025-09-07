@@ -662,7 +662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &678534223
 Animator:
   serializedVersion: 5
@@ -1230,6 +1230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129579377427169776, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
+        type: 3}
+      propertyPath: ChainLength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3255915119018540288, guid: 31ceca0ef9508d54d8d967b5cc8d932e,
         type: 3}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2627031767960172936}
   m_Layer: 0
-  m_Name: Test3
+  m_Name: THISISOURBOY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   Target: {fileID: 2690308746362450977}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!1 &483671521884937263 stripped
 GameObject:
@@ -506,7 +506,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 7305962194274864244}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 1, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.000000014901161, y: 0.7470973, z: -0.00000044703484}
   serializedVersion: 2
@@ -710,11 +710,11 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 6995705797594533941}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.000000011175871, y: 0.69961274, z: 0.000000014901161}
   serializedVersion: 2
-  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
     spring: 0
     damper: 0
@@ -762,7 +762,7 @@ MonoBehaviour:
   Target: {fileID: 4746229465492578602}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!1 &1875200800112877748 stripped
 GameObject:
@@ -880,7 +880,7 @@ MonoBehaviour:
   Target: {fileID: 6530998839256301827}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!1 &2184270558073644900 stripped
 GameObject:
@@ -948,11 +948,11 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 2099461662323476629}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.0000000037252903, y: 0.69944954, z: 0.000000029802322}
   serializedVersion: 2
-  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
     spring: 0
     damper: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   Target: {fileID: 9021282131684776493}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!4 &2845483843722180115 stripped
 Transform:
@@ -1074,7 +1074,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 8139014717614506477}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.29920408, y: -0.14999329, z: -0.008591446}
   serializedVersion: 2
@@ -1176,7 +1176,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 8642853275287667817}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.000000009313226, y: 0.8013286, z: -0.0000000018626451}
   serializedVersion: 2
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   Target: {fileID: 4507899681538322055}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!1 &5443789205561456283 stripped
 GameObject:
@@ -1404,7 +1404,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 8139014717614506477}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.29920408, y: -0.14999332, z: -0.00788832}
   serializedVersion: 2
@@ -1506,7 +1506,7 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 7803697076500095208}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.0000000055879354, y: 0.8014228, z: -9.313226e-10}
   serializedVersion: 2
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   Target: {fileID: 2495948305396459287}
   Pole: {fileID: 0}
   Iterations: 10
-  Delta: 0.001
+  Delta: 0.01
   SnapBackStrength: 1
 --- !u!1 &8233798591850888666 stripped
 GameObject:
