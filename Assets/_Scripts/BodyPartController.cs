@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyPartController : MonoBehaviour
-{
-    [SerializeField]
-    protected KeyCode targetKeycode;
+{    
+    public KeyCode targetKeycode;
 
     protected Transform targetTransform;
 
@@ -20,6 +19,8 @@ public class BodyPartController : MonoBehaviour
     [SerializeField]
     private Transform _bodyPartTransform;
 
+    public bool isReplay = false;
+
     private void Awake()
     {
         this.targetTransform = GetComponent<Transform>();
@@ -29,6 +30,11 @@ public class BodyPartController : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (this.isReplay == true)
+        {
+            return;
+        }
+    
         if (Input.GetKeyDown(this.targetKeycode))
         {
             StartCoroutine(this.ManipulateTarget());
@@ -41,7 +47,7 @@ public class BodyPartController : MonoBehaviour
     }
 
     protected float GetCurrentViewportDiff()
-    {
+    {    
         Vector3 initialMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         Vector3 updatedMousePosition = initialMousePosition;
 
@@ -55,18 +61,38 @@ public class BodyPartController : MonoBehaviour
         return currentViewportDiff;
     }
 
-    protected Vector3 GetDiffVector()
+    public Vector3 GetDiffVector()
     {
-        return (updatedMousePosition - initialMousePosition);
+        if (this.isReplay == true)
+        {
+            return ReplaySimulator.instance.GetReplayDiffVector(this.targetKeycode);
+        }
+    
+        if (Input.GetKey(this.targetKeycode) == true)
+        {
+            return (updatedMousePosition - initialMousePosition);
+        }
+
+        return Vector3.zero;
     }
 
     protected float GetNormalizedX()
     {
+        if (this.isReplay == true)
+        {
+            return ReplaySimulator.instance.GetReplayNormalizedX(this.targetKeycode, this.maxViewportDiff);
+        }
+    
         return (Mathf.Abs(this.GetDiffVector().x / this.maxViewportDiff));
     }
 
     protected float GetNormalizedY()
     {
+        if (this.isReplay == true)
+        {
+            return ReplaySimulator.instance.GetReplayNormalizedY(this.targetKeycode, this.maxViewportDiff);
+        }
+
         return (Mathf.Abs(this.GetDiffVector().y / this.maxViewportDiff));
     }
 
@@ -75,5 +101,11 @@ public class BodyPartController : MonoBehaviour
         this._bodyPartTransform.position = this._startingPosition;
         this._bodyPartTransform.rotation = Quaternion.Euler(this._startingRotation);
         this.targetTransform.position = this._startingPosition;
+    }
+
+    public void SetInitialTransform(Vector3 initialPosition, Vector3 initialRotation)
+    {
+        this.targetTransform.position = initialPosition;
+        this.targetTransform.rotation = Quaternion.Euler(initialRotation);
     }
 }
