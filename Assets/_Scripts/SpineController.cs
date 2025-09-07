@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpineController : BodyPartController
 {
-
     private float _maxXDistance = 0.5f;
     private float _maxXRotation = 40.0f;
     private float _maxZRotation = 15.0f;
@@ -23,7 +22,7 @@ public class SpineController : BodyPartController
             float zRotation = this.CalculateZRotation();
 
             this.targetTransform.position = new Vector3(xPosition, this.targetTransform.position.y, this.targetTransform.position.z);
-            this.targetTransform.rotation = Quaternion.Euler(xRotation, 0.0f, zRotation);
+            this.targetTransform.rotation = Quaternion.Euler(-xRotation, 0.0f, zRotation);
 
             yield return new WaitForEndOfFrame();
 
