@@ -64,12 +64,12 @@ public class InputRecorder : MonoBehaviour
     }
 
     public void StopRecording()
-    {
-        Debug.LogError("Stopping Recording");
-    
+    {    
         StopAllCoroutines();
 
-        RecordedData.SaveDataToFile();
+        //RecordedData.SaveDataToFile();
+
+        this.UploadFileToDatabase();
 
         this._recordingText.text = "Recording File Saved at: " + Application.persistentDataPath;
 
@@ -121,5 +121,13 @@ public class InputRecorder : MonoBehaviour
         }
 
         return new MouseCommand(new FrameInputSettings(this._currentFrameInputSettings), diffVectorsThisFrame);
+    }
+
+    private void UploadFileToDatabase()
+    {
+        UploadReplayDataAsyncRequest replayDataRequest = new UploadReplayDataAsyncRequest(PlayerPrefs.GetString("username"), 0, RecordedData.GetReplayDataString());
+        replayDataRequest.Send();
+
+        //UploadVideoDataAsyncRequest videoDataRequest = new UploadVideoDataAsyncRequest()
     }
 }

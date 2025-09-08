@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -50,10 +51,22 @@ public static class RecordedData
 
     public static void SaveDataToFile()
     {
-        StreamWriter writer = File.CreateText(Application.persistentDataPath + "/testFilename.txt");
+        List<string> replayDataString = new List<string>();
+        replayDataString.Add((RecordedData.initialPositions + '\n'));
+        replayDataString.Add((RecordedData.initialRotations + '\n'));
+
+        for (int i = 0; i < RecordedData.frameData.Count; i++)
+        {
+            replayDataString.Add((RecordedData.GetFrameInputDataString(RecordedData.frameData[i]) + '\n'));            
+        }
+
+        File.WriteAllLines((Application.persistentDataPath + "\\draft.txt"), replayDataString, Encoding.UTF8);
+        
+        /*
+        StreamWriter writer = File.CreateText(Application.persistentDataPath + "/draft.txt");
 
         //Save Initial Positions
-        writer.WriteLine(RecordedData.initialPositions);
+        writer.WriteLine(RecordedData.initialPositions, );
 
         //Save Initial Rotations
         writer.WriteLine(RecordedData.initialRotations);
@@ -65,6 +78,21 @@ public static class RecordedData
         }
 
         writer.Close();
+        */
+    }
+
+    public static string GetReplayDataString()
+    {
+        string replayDataString = string.Empty;
+        replayDataString += (RecordedData.initialPositions + '\n');
+        replayDataString += (RecordedData.initialRotations + '\n');
+
+        for (int i = 0; i < RecordedData.frameData.Count; i++)
+        {
+            replayDataString += (RecordedData.GetFrameInputDataString(RecordedData.frameData[i]) + '\n');
+        }
+
+        return replayDataString;
     }
 
     private static string GetFrameInputDataString(FrameInputSettings frameInputData)
