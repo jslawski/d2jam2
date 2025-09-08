@@ -14,6 +14,8 @@ public class CharacterProfile
 
 public class CharacterGenerator : MonoBehaviour
 {
+    public static CharacterGenerator instance;
+
     private Texture2D[] _bodyTextures;
 
     [SerializeField]
@@ -34,6 +36,11 @@ public class CharacterGenerator : MonoBehaviour
     private void Awake()
     {
         this._bodyTextures = Resources.LoadAll<Texture2D>("BodyTextures");
+
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     private void Update()

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CommunityTabManager : MonoBehaviour
 {
+    public static CommunityTabManager instance;
+
     private int _currentPageNum = 0;    
 
     private int _maxNumVideosToRequest = 15;
@@ -21,6 +23,18 @@ public class CommunityTabManager : MonoBehaviour
     private void Awake()
     {
         this._videoCards = GetComponentsInChildren<VideoCard>(true);
+
+        if (instance == null)
+        {
+            instance = this;
+        }       
+    }
+
+    private void Start()
+    {
+        this.LoadTopVideos();
+
+        CharacterGenerator.instance.LoadCharacterFromPlayerPrefs();
     }
 
     public void LoadTopVideos()
@@ -38,6 +52,12 @@ public class CommunityTabManager : MonoBehaviour
     public void LoadRandomVideos()
     {
         GetPostedVideosAsyncRequest postedVideosRequest = new GetPostedVideosAsyncRequest(0, this._maxNumVideosToRequest, "RAND", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
+        postedVideosRequest.Send();
+    }
+
+    public void LoadMyVideos()
+    {
+        GetPostedVideosAsyncRequest postedVideosRequest = new GetPostedVideosAsyncRequest(this._currentPageNum, this._maxNumVideosToRequest, PlayerPrefs.GetString("username", "test"), this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
         postedVideosRequest.Send();
     }
 
@@ -66,6 +86,7 @@ public class CommunityTabManager : MonoBehaviour
         {
             if (i < this._currentPostedVideos.entries.Count)
             {
+                this._videoCards[i].EnableCard();
                 this._videoCards[i].UpdateVideoCard(this._currentPostedVideos.entries[i]);
             }
             else

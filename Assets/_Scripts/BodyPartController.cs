@@ -109,6 +109,7 @@ public class BodyPartController : MonoBehaviour
         this._bodyPartTransform.position = this._startingPosition;
         this._bodyPartTransform.rotation = Quaternion.Euler(this._startingRotation);
         this.targetTransform.position = this._startingPosition;
+        this.isReplay = false;
     }
 
     public void SetInitialTransform(Vector3 initialPosition, Vector3 initialRotation)

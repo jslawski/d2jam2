@@ -168,6 +168,7 @@ public class InputRecorder : MonoBehaviour
     {
         MusicManager.instance.StopMusic();
         this._createMenu.SetActive(false);
+        MusicManager.instance.PlayMenuMusic();
     }
 
     private void UploadFailure()

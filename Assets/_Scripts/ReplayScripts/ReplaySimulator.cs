@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class ReplaySimulator : MonoBehaviour
@@ -14,22 +15,51 @@ public class ReplaySimulator : MonoBehaviour
 
     private ReplayData _replayData;
 
+    private bool _replayClosed = false;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        this._bodyPartControllers = GetComponentsInChildren<BodyPartController>();
+    }
+
+    public void CleanupReplay()
+    {
+        for (int i = 0; i < this._bodyPartControllers.Length; i++)
+        {
+            this._bodyPartControllers[i].ResetBodyPart();
+        }
+
+        this._replayClosed = true;
     }
 
     public void SetupReplay(ReplayData replayData)
     {
+        this._replayClosed = false;
         this._replayData = replayData;
         BackgroundManager.instance.SetBackgroundAtIndex(this._replayData.videoData.backgroundIndex);
         MusicManager.instance.SetSongIndex(this._replayData.videoData.bgmIndex);
         MusicManager.instance.SetSongSample(this._replayData.videoData.bgmSampleIndex);
         this.SetupBodyPartControllersForReplay();
         this.SetInitialTransforms();
+    }
+
+    private void SetupCharacter()
+    {
+        CharacterProfile replayCharacter = new CharacterProfile();
+
+        replayCharacter.textureIndex = this._replayData.videoData.bodyTextureIndex;
+        replayCharacter.hairIndex = this._replayData.videoData.hairIndex;
+        replayCharacter.eyebrowsIndex = this._replayData.videoData.eyebrowsIndex;
+        replayCharacter.eyesIndex = this._replayData.videoData.eyesIndex;
+        replayCharacter.noseIndex = this._replayData.videoData.noseIndex;
+        replayCharacter.mouthIndex = this._replayData.videoData.mouthIndex;
+
+        CharacterGenerator.instance.LoadCharacterFromProfile(replayCharacter);
     }
 
     private void RestartReplay()
@@ -59,7 +89,10 @@ public class ReplaySimulator : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        this.RestartReplay();
+        if (this._replayClosed == false)
+        {
+            this.RestartReplay();
+        }
     }
 
     private void SetInitialTransforms()

@@ -23,6 +23,9 @@ public class VideoCard : MonoBehaviour
     [SerializeField]
     private GameObject _replayParent;
 
+    [SerializeField]
+    private Image _backgroundImage;
+
     private void Awake()
     {
         this._replayData = new ReplayData();
@@ -42,7 +45,12 @@ public class VideoCard : MonoBehaviour
 
     public void DisableCard()
     {
-        this.gameObject.SetActive(false);
+        this._backgroundImage.enabled = false;
+    }
+
+    public void EnableCard()
+    {
+        this._backgroundImage.enabled = true;
     }
 
     public void LoadReplayData(string username, int videoIndex)
@@ -53,7 +61,7 @@ public class VideoCard : MonoBehaviour
 
     public void LoadThumbnailData(string username, int videoIndex)
     {
-        StartCoroutine(this.RequestThumbnailTexture());
+        StartCoroutine(this.RequestThumbnailTexture(username, videoIndex));
     }
 
     private void LoadReplayDataSuccess(string data)
@@ -62,7 +70,9 @@ public class VideoCard : MonoBehaviour
 
         StreamReader fileReader = new StreamReader(Application.persistentDataPath + "\\" + this._replayData.videoData.username + this._replayData.videoData.videoIndex + ".txt");
 
-        this._replayData.SetupReplayData(fileReader);        
+        this._replayData.SetupReplayData(fileReader);
+
+        fileReader.Close();
     }
 
     private void LoadReplayDataFailure()
@@ -70,9 +80,9 @@ public class VideoCard : MonoBehaviour
         Debug.LogError("ERROR: Unable to load replay data");
     }
 
-    private IEnumerator RequestThumbnailTexture()
+    private IEnumerator RequestThumbnailTexture(string username, int videoIndex)
     {
-        string url = ServerSecrets.ServerName + "d2jam2/thumbnails/" + PlayerPrefs.GetString("username", "test") + this._replayData.videoData.videoIndex.ToString() + ".png";
+        string url = ServerSecrets.ServerName + "d2jam2/thumbnails/" + username + videoIndex.ToString() + ".png";
         
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
 

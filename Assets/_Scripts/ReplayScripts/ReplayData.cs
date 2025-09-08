@@ -31,7 +31,11 @@ public class ReplayData
     }
 
     public void SetupReplayData(StreamReader fileReader)
-    { 
+    {
+        this.initialPositions = new Dictionary<KeyCode, Vector3>();
+        this.initialRotations = new Dictionary<KeyCode, Vector3>();
+        this.frameInputSettings = new List<FrameInputSettings>();
+
         this.LoadInitialPositions(fileReader);
         this.LoadInitialRotations(fileReader);
         this.LoadFrameInputSettings(fileReader);
@@ -39,6 +43,8 @@ public class ReplayData
 
     private void LoadInitialPositions(StreamReader fileReader)
     {
+        
+    
         string initialPositionsString = fileReader.ReadLine();
         string[] initialPositionValues = initialPositionsString.Split(",");
 

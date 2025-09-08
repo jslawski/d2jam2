@@ -8,6 +8,9 @@ public class MusicManager : MonoBehaviour
 
     private AudioClip[] _randomTracks;
 
+    [SerializeField]
+    private AudioClip _menuMusic;
+
     private AudioSource _audioSource;
 
     private int _currentTrackIndex = 0;
@@ -27,11 +30,22 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        this.StartBackgroundMusic();
+        this.PlayMenuMusic();
+    }
+
+    public void PlayMenuMusic()
+    {
+        if (this._audioSource.clip != this._menuMusic)
+        {
+            this._audioSource.Stop();
+            this._audioSource.clip = this._menuMusic;
+            this._audioSource.Play();
+        }
     }
 
     public void StartBackgroundMusic()
     {
+        this._audioSource.Stop();
         this._audioSource.clip = this._randomTracks[this._currentTrackIndex];
         this._audioSource.Play();
     }
