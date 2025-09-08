@@ -15,6 +15,7 @@ public class NavButtons : MonoBehaviour
         CommunityTabManager.instance.LoadTopVideos();
         this._createTab.SetActive(false);
         this._replayTab.SetActive(false);
+        CommunityTabManager.instance.ResetPageNumber();
         MusicManager.instance.PlayMenuMusic();
     }
 
@@ -24,6 +25,7 @@ public class NavButtons : MonoBehaviour
         CommunityTabManager.instance.LoadMyVideos();
         this._createTab.SetActive(false);
         this._replayTab.SetActive(false);
+        CommunityTabManager.instance.ResetPageNumber();
         MusicManager.instance.PlayMenuMusic();
     }
 

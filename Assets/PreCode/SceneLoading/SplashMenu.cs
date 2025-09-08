@@ -31,6 +31,8 @@ public class SplashMenu : MonoBehaviour
         
         videoPlayer.started += OnVideoStarted;
 
+        Application.targetFrameRate = 60;
+
         //Cursor.visible = false;
     }
 

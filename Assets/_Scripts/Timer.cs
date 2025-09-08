@@ -25,6 +25,8 @@ public class Timer : MonoBehaviour
     {
         this._timeLeft = 10.0f;
         this._timerStarted = false;
+        this._timerText.text = "10s";
+        this._endingAnimation.SetActive(false);
     }
 
     // Update is called once per frame

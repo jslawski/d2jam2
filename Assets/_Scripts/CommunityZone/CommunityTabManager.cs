@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public  enum Category { Top, New, Random };
+
 public class CommunityTabManager : MonoBehaviour
 {
     public static CommunityTabManager instance;
@@ -20,6 +23,9 @@ public class CommunityTabManager : MonoBehaviour
     [SerializeField]
     private Button _pageDecrementButton;
 
+    
+    public Category _category = Category.Top;
+
     private void Awake()
     {
         this._videoCards = GetComponentsInChildren<VideoCard>(true);
@@ -35,6 +41,22 @@ public class CommunityTabManager : MonoBehaviour
         this.LoadTopVideos();
 
         CharacterGenerator.instance.LoadCharacterFromPlayerPrefs();
+    }
+
+    public void ReloadVideos()
+    { 
+        switch (this._category) 
+        {
+            case Category.Top:
+                this.LoadTopVideos();
+                break;
+            case Category.New:
+                this.LoadNewestVideos();
+                break;
+            default:
+                this.LoadRandomVideos();
+                break;
+        }
     }
 
     public void LoadTopVideos()
@@ -118,15 +140,34 @@ public class CommunityTabManager : MonoBehaviour
     }
 
     public void IncrementPageNum()
-    {        
+    {
+        if (this._category == Category.Random)
+        {
+            return;
+        }
+        
         this._currentPageNum++;
+
+        this.ReloadVideos();        
     }
 
     public void DecrementPageNum()
     {
+        if (this._category == Category.Random)
+        {
+            return;
+        }
+
         if (this._currentPageNum > 0)
         {
             this._currentPageNum--;
         }
-    }    
+
+        this.ReloadVideos();
+    }
+
+    public void ResetPageNumber()
+    {
+        this._currentPageNum = 0;
+    }
 }

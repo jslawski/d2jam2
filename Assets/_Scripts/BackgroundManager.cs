@@ -57,7 +57,7 @@ public class BackgroundManager : MonoBehaviour
 
     public void SetBackgroundAtIndex(int index)
     {
-        this._backgroundRenderer.material.mainTexture = this._randomBackgrounds[this._currentBackgroundIndex];
+        this._backgroundRenderer.material.mainTexture = this._randomBackgrounds[index];
     }
 
     public int GetCurrentIndex()
