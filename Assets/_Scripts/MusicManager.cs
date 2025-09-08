@@ -74,4 +74,9 @@ public class MusicManager : MonoBehaviour
 
         this._audioSource.Play();
     }
+
+    public void StopMusic()
+    {
+        this._audioSource.Stop();
+    }
 }

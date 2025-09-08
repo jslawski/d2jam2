@@ -10,6 +10,11 @@ public class Timer : MonoBehaviour
     private bool _timerStarted;
 
     private float _timeLeft = 10.0f;
+    
+    [SerializeField]
+    private GameObject _endingAnimation;
+    [SerializeField]
+    private GameObject _createModeParent;
 
     private void Awake()
     {
@@ -46,5 +51,11 @@ public class Timer : MonoBehaviour
         }
 
         this._timerText.text = "0s";
+        this._endingAnimation.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        this._createModeParent.SetActive(false);
+        MusicManager.instance.StopMusic();
     }
 }
