@@ -45,6 +45,7 @@ public class ReplaySimulator : MonoBehaviour
         MusicManager.instance.SetSongIndex(this._replayData.videoData.bgmIndex);
         MusicManager.instance.SetSongSample(this._replayData.videoData.bgmSampleIndex);
         this.SetupBodyPartControllersForReplay();
+        this.SetupCharacter();
         this.SetInitialTransforms();
     }
 
