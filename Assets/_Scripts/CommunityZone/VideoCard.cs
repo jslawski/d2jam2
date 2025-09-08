@@ -24,7 +24,7 @@ public class VideoCard : MonoBehaviour
     private GameObject _replayParent;
 
     [SerializeField]
-    private Image _backgroundImage;
+    private GameObject _backgroundImage;
 
     private void Awake()
     {
@@ -45,12 +45,12 @@ public class VideoCard : MonoBehaviour
 
     public void DisableCard()
     {
-        this._backgroundImage.enabled = false;
+        this._backgroundImage.SetActive(false);
     }
 
     public void EnableCard()
     {
-        this._backgroundImage.enabled = true;
+        this._backgroundImage.SetActive(true);
     }
 
     public void LoadReplayData(string username, int videoIndex)

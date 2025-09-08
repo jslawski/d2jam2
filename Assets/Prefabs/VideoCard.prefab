@@ -273,7 +273,7 @@ MonoBehaviour:
   _usernameLabel: {fileID: 1594063952463300431}
   _likesCountLabel: {fileID: 7017852908198327155}
   _replayParent: {fileID: 0}
-  _backgroundImage: {fileID: 6339165216029717651}
+  _backgroundImage: {fileID: 5653094400574001276}
 --- !u!114 &5603738114193646108
 MonoBehaviour:
   m_ObjectHideFlags: 0

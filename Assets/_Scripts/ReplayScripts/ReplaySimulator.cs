@@ -13,7 +13,7 @@ public class ReplaySimulator : MonoBehaviour
 
     private BodyPartController[] _bodyPartControllers;
 
-    private ReplayData _replayData;
+    public ReplayData _replayData;
 
     private bool _replayClosed = false;
 
