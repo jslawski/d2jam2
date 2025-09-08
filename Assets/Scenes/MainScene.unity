@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36182683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5523929655271408595, guid: bbc29a0b304276543affd8b7f2b43238,
+    type: 3}
+  m_PrefabInstance: {fileID: 667400449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &36182688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36182683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410cf9c9274b8ed4d8ecc656ffc3035b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &54361645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,7 +2203,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 582949035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36182688}
+        m_TargetAssemblyTypeName: BackgroundManager, Assembly-CSharp
+        m_MethodName: NextButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &582949035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,10 +2689,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 5523929655271408595, guid: bbc29a0b304276543affd8b7f2b43238,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5523929655271408595, guid: bbc29a0b304276543affd8b7f2b43238,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 36182688}
   m_SourcePrefab: {fileID: 100100000, guid: bbc29a0b304276543affd8b7f2b43238, type: 3}
 --- !u!1001 &669418807
 PrefabInstance:
@@ -3528,7 +3567,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984202995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1689872451}
+        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
+        m_MethodName: NextSongPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &984202995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5870,7 +5921,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1619630936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1689872451}
+        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
+        m_MethodName: PrevSongPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1619630936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6286,10 +6349,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689872450}
-  - component: {fileID: 1689872449}
   - component: {fileID: 1689872448}
+  - component: {fileID: 1689872451}
   m_Layer: 0
-  m_Name: MusicPlayer
+  m_Name: MusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6305,8 +6368,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e92de63420ee954ca7b3058964a986a, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -6391,26 +6454,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1689872449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689872447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf9ea69cd38eed4d9f3635a009fc39d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bodyPartControllers:
-  - {fileID: 1663337948}
-  - {fileID: 1586549376}
-  - {fileID: 1268203189}
-  - {fileID: 134252161}
-  - {fileID: 555075671}
-  - {fileID: 1610253977}
-  - {fileID: 1892518917}
 --- !u!4 &1689872450
 Transform:
   m_ObjectHideFlags: 0
@@ -6419,13 +6462,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689872447}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.507287, y: 2.3126297, z: 0.7572999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 608.5, y: 342.5, z: 0}
+  m_LocalScale: {x: 0.63385415, y: 0.63385415, z: 0.63385415}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1689872451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689872447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a69d7ffc66f7743b49dde198f26646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1702591478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,7 +7277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1956618076}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36182688}
+        m_TargetAssemblyTypeName: BackgroundManager, Assembly-CSharp
+        m_MethodName: PrevButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1956618076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7804,10 +7871,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
+  - {fileID: 1689872450}
   - {fileID: 1307328726}
   - {fileID: 832575519}
   - {fileID: 1971432861}
-  - {fileID: 1689872450}
   - {fileID: 335245382}
   - {fileID: 982712355}
   - {fileID: 436126965}
