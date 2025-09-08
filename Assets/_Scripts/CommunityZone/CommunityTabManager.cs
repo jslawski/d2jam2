@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CommunityTabManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class CommunityTabManager : MonoBehaviour
     private PostedVideosData _currentPostedVideos;
 
     private VideoCard[] _videoCards;
+
+    [SerializeField]
+    private Button _pageIncrementButton;
+    [SerializeField]
+    private Button _pageDecrementButton;
 
     private void Awake()
     {
@@ -46,6 +52,7 @@ public class CommunityTabManager : MonoBehaviour
         this._currentPostedVideos = JsonUtility.FromJson<PostedVideosData>(data);
 
         this.UpdateAllVideoCards();
+        this.UpdatePageButtons();
     }
 
     private void GetPostedVideosFailure()
@@ -61,9 +68,29 @@ public class CommunityTabManager : MonoBehaviour
         }
     }
 
-    public void IncrementPageNum()
+    private void UpdatePageButtons()
     {
-        //Add Logic to not increment past the max page num (once we know it)
+        if (this._currentPostedVideos.entries.Count < this._maxNumVideosToRequest)
+        {
+            this._pageIncrementButton.interactable = false;
+        }
+        else
+        {
+            this._pageIncrementButton.interactable = true;
+        }
+
+        if (this._currentPageNum == 0)
+        {
+            this._pageDecrementButton.interactable = false;
+        }
+        else
+        {
+            this._pageDecrementButton.interactable = true;
+        }
+    }
+
+    public void IncrementPageNum()
+    {        
         this._currentPageNum++;
     }
 
@@ -73,7 +100,5 @@ public class CommunityTabManager : MonoBehaviour
         {
             this._currentPageNum--;
         }
-    }
-
-    
+    }    
 }

@@ -36,14 +36,10 @@ public class InputRecorder : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (_isRecording == true)
-            {
-                this.StopRecording();
-            }
-            else
+            if (_isRecording == false)
             {
                 this.StartRecording();
-            }
+            }            
         }
     }
 
