@@ -62,9 +62,16 @@ public class CommunityTabManager : MonoBehaviour
 
     private void UpdateAllVideoCards()
     {
-        for (int i = 0; i < this._currentPostedVideos.entries.Count; i++)
+        for (int i = 0; i < this._videoCards.Length; i++)
         {
-            this._videoCards[i].UpdateVideoCard(this._currentPostedVideos.entries[i]);
+            if (i < this._currentPostedVideos.entries.Count)
+            {
+                this._videoCards[i].UpdateVideoCard(this._currentPostedVideos.entries[i]);
+            }
+            else
+            {
+                this._videoCards[i].DisableCard();
+            }
         }
     }
 

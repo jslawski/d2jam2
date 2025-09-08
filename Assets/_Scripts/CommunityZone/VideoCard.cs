@@ -33,6 +33,13 @@ public class VideoCard : MonoBehaviour
 
         this.LoadReplayData(videoData.username, videoData.videoIndex);
         this.LoadThumbnailData(videoData.username, videoData.videoIndex);
+
+        this.gameObject.SetActive(true);
+    }
+
+    public void DisableCard()
+    {
+        this.gameObject.SetActive(false);
     }
 
     public void LoadReplayData(string username, int videoIndex)
@@ -62,7 +69,10 @@ public class VideoCard : MonoBehaviour
 
     private IEnumerator RequestThumbnailTexture()
     {
-        string url = ServerSecrets.ServerName + "d2jam2/thumbnails/" + this._replayData.videoData.username + this._replayData.videoData.videoIndex.ToString() + ".png";
+        string url = ServerSecrets.ServerName + "d2jam2/thumbnails/" + PlayerPrefs.GetString("username", "test") + this._replayData.videoData.videoIndex.ToString() + ".png";
+
+        Debug.LogError("URL: " + url);
+        
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
 
         yield return request.SendWebRequest();

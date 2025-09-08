@@ -32,9 +32,7 @@ public class ScreenshotManager : MonoBehaviour
     }
 
     IEnumerator TakeScreenshot(float delay=0.1f)
-    {
-        Debug.LogError("Taking Screenshot!");
-    
+    {    
         screenshotCam.gameObject.SetActive(true);
         yield return new WaitForSeconds(delay);
         yield return new WaitForEndOfFrame();
