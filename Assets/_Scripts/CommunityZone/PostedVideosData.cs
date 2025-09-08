@@ -7,6 +7,7 @@ public class VideoData
     public string username;
     public int videoIndex;
     public int numLikes;
+    public string backgroundName;
     public string bgmName;
     public int bgmSampleIndex;
     public string hairName;

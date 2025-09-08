@@ -19,20 +19,20 @@ public class CommunityTabManager : MonoBehaviour
 
     public void LoadTopVideos()
     {
-        GetPostedVideosAsyncRequest leaderboardRequest = new GetPostedVideosAsyncRequest(this._currentPageNum, this._maxNumVideosToRequest, "DESC", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
-        leaderboardRequest.Send();
+        GetPostedVideosAsyncRequest postedVideosRequest = new GetPostedVideosAsyncRequest(this._currentPageNum, this._maxNumVideosToRequest, "DESC", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
+        postedVideosRequest.Send();
     }
 
     public void LoadNewestVideos()
     {
-        GetPostedVideosAsyncRequest leaderboardRequest = new GetPostedVideosAsyncRequest(this._currentPageNum, this._maxNumVideosToRequest, "ASC", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
-        leaderboardRequest.Send();
+        GetPostedVideosAsyncRequest postedVideosRequest = new GetPostedVideosAsyncRequest(this._currentPageNum, this._maxNumVideosToRequest, "ASC", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
+        postedVideosRequest.Send();
     }
 
     public void LoadRandomVideos()
     {
-        GetPostedVideosAsyncRequest leaderboardRequest = new GetPostedVideosAsyncRequest(0, this._maxNumVideosToRequest, "RAND", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
-        leaderboardRequest.Send();
+        GetPostedVideosAsyncRequest postedVideosRequest = new GetPostedVideosAsyncRequest(0, this._maxNumVideosToRequest, "RAND", this.GetPostedVideosSuccess, this.GetPostedVideosFailure);
+        postedVideosRequest.Send();
     }
 
     private void GetPostedVideosSuccess(string data)
