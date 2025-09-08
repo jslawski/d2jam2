@@ -19,6 +19,8 @@ public class CharacterGenerator : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer _renderer;
     [SerializeField]
+    private MeshRenderer _earsRenderer;
+    [SerializeField]
     private GameObject _hairParent;
     [SerializeField]
     private GameObject _eyebrowsParent;
@@ -52,6 +54,7 @@ public class CharacterGenerator : MonoBehaviour
         }
 
         this._renderer.material.mainTexture = this._bodyTextures[bodyTextureIndex];
+        this._earsRenderer.material.mainTexture = this._bodyTextures[bodyTextureIndex];
 
         this.EnableSelectedChild(this._hairParent, PlayerPrefs.GetInt("hair", 0));
         this.EnableSelectedChild(this._eyebrowsParent, PlayerPrefs.GetInt("eyebrows", 0));
@@ -63,7 +66,8 @@ public class CharacterGenerator : MonoBehaviour
     public void LoadCharacterFromProfile(CharacterProfile profile)
     {
         this._renderer.material.mainTexture = this._bodyTextures[profile.textureIndex];
-    
+        this._earsRenderer.material.mainTexture = this._bodyTextures[profile.textureIndex];
+
         this.EnableSelectedChild(this._hairParent, profile.hairIndex);
         this.EnableSelectedChild(this._eyebrowsParent, profile.eyebrowsIndex);
         this.EnableSelectedChild(this._eyesParent, profile.eyesIndex);
@@ -88,6 +92,7 @@ public class CharacterGenerator : MonoBehaviour
         PlayerPrefs.SetInt("mouth", mouthIndex);
 
         this._renderer.material.mainTexture = this._bodyTextures[bodyIndex];
+        this._earsRenderer.material.mainTexture = this._bodyTextures[bodyIndex];
 
         this.EnableSelectedChild(this._hairParent, hairIndex);
         this.EnableSelectedChild(this._eyebrowsParent, eyebrowsIndex);

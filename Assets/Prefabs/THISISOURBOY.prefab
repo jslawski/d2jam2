@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3728236515375721366}
+  _earsRenderer: {fileID: 5117662574967955770}
   _hairParent: {fileID: 3872645827366893451}
   _eyebrowsParent: {fileID: 2074829093570924320}
   _eyesParent: {fileID: 4609244637629294417}
@@ -189,6 +190,12 @@ GameObject:
 --- !u!1 &4609244637629294417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1388914918403454693, guid: bd303b67098fdd64fa140344100a40c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3220418232131850676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5117662574967955770 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7761021221993427086, guid: bd303b67098fdd64fa140344100a40c7,
     type: 3}
   m_PrefabInstance: {fileID: 3220418232131850676}
   m_PrefabAsset: {fileID: 0}
