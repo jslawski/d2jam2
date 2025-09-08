@@ -11,7 +11,7 @@ public class VideoData
     public string bgmName;
     public int bgmSampleIndex;
     public string hairName;
-    public string eyebrowName;
+    public string eyebrowsName;
     public string eyesName;
     public string noseName;
     public string mouthName;
