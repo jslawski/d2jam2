@@ -88,7 +88,7 @@ public class InputRecorder : MonoBehaviour
 
             RecordedData.AddFrameInputSettings(this._currentFrameInputSettings);
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 

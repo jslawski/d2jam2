@@ -60,4 +60,13 @@ public class HipsController : BodyPartController
 
         return diffAmount;
     }
+
+    public override void SimulateReplay()
+    {
+        float xPosition = this.CalculateXPosition();
+        float yPosition = this.CalculateYPosition();
+        float zPosition = this.CalculateZPosition();
+
+        this.targetTransform.position = new Vector3(xPosition, yPosition, zPosition);
+    }
 }

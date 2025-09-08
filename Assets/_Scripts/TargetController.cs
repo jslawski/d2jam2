@@ -93,4 +93,13 @@ public class TargetController : BodyPartController
 
         return this.targetTransform.position.z;
     }
+
+    public override void SimulateReplay()
+    {
+        float newX = this.CalculateXPosition();
+        float newY = this.CalculateYPosition();
+        float newZ = this.CalculateZPosition();
+
+        this.targetTransform.position = new Vector3(newX, newY, newZ);
+    }
 }

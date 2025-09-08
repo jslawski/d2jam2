@@ -54,4 +54,12 @@ public class HeadController : BodyPartController
 
         return diffAmount;
     }
+
+    public override void SimulateReplay()
+    {
+        float zAngle = this.CalculateXAngle();
+        float xAngle = this.CalculateZAngle();
+
+        this.targetTransform.rotation = Quaternion.Euler(-xAngle, 0.0f, zAngle);
+    }
 }

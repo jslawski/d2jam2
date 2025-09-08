@@ -8,7 +8,7 @@ public class BodyPartController : MonoBehaviour
 
     protected Transform targetTransform;
 
-    protected float minViewportDiff = 0.05f;
+    protected float minViewportDiff = 0.00f;
     protected float maxViewportDiff = 0.5f;
 
     protected Vector3 initialMousePosition;
@@ -41,24 +41,14 @@ public class BodyPartController : MonoBehaviour
         }
     }
 
+    public virtual void SimulateReplay()
+    { 
+    
+    }
+
     protected virtual IEnumerator ManipulateTarget()
     {
         yield return null;
-    }
-
-    protected float GetCurrentViewportDiff()
-    {    
-        Vector3 initialMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 updatedMousePosition = initialMousePosition;
-
-        float currentViewportDiff = Mathf.Clamp(Vector3.Distance(updatedMousePosition, initialMousePosition), 0.0f, this.maxViewportDiff);
-
-        if (currentViewportDiff > this.minViewportDiff)
-        {
-            currentViewportDiff = Mathf.Clamp(Vector3.Distance(updatedMousePosition, initialMousePosition), 0.0f, this.maxViewportDiff);
-        }
-
-        return currentViewportDiff;
     }
 
     public Vector3 GetDiffVector()
@@ -70,10 +60,28 @@ public class BodyPartController : MonoBehaviour
     
         if (Input.GetKey(this.targetKeycode) == true)
         {
-            return (updatedMousePosition - initialMousePosition);
+            return this.GetClampedDiffVector(updatedMousePosition - initialMousePosition);
         }
 
         return Vector3.zero;
+    }
+
+    private Vector3 GetClampedDiffVector(Vector3 unclampedVector)
+    {
+        float clampedX = unclampedVector.x;
+        float clampedY = unclampedVector.y;
+    
+        if (Mathf.Abs(unclampedVector.x) > this.maxViewportDiff)
+        {
+            clampedX = Mathf.Clamp(unclampedVector.x, -this.maxViewportDiff, this.maxViewportDiff);
+        }
+
+        if (Mathf.Abs(unclampedVector.y) > this.maxViewportDiff)
+        {
+            clampedY = Mathf.Clamp(unclampedVector.y, -this.maxViewportDiff, this.maxViewportDiff);
+        }
+
+        return new Vector3(clampedX, clampedY, 0.0f);
     }
 
     protected float GetNormalizedX()

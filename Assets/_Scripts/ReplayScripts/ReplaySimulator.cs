@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class ReplaySimulator : MonoBehaviour
 {
@@ -35,6 +38,7 @@ public class ReplaySimulator : MonoBehaviour
         {                   
             this.LoadReplayData();
             this.SetupReplay();
+            this.StartReplay();
         }
     }
 
@@ -44,6 +48,7 @@ public class ReplaySimulator : MonoBehaviour
 
         this.LoadInitialPositions(fileReader);
         this.LoadInitialRotations(fileReader);
+        this.LoadFrameInputSettings(fileReader);
     }
 
     private void LoadInitialPositions(StreamReader fileReader)
@@ -90,15 +95,65 @@ public class ReplaySimulator : MonoBehaviour
         this._initialRotations.Add(KeyCode.C, leftLegInitialRotation);
     }
 
+    private void LoadFrameInputSettings(StreamReader fileReader)
+    {
+        string readLine = string.Empty;
+        while ((readLine = fileReader.ReadLine()) != null)
+        {
+            this._frameInputSettings.Add(this.ParseInputSettingsString(readLine));
+        }
+    }
+
+    private FrameInputSettings ParseInputSettingsString(string inputSettingsString)
+    {
+        Dictionary<KeyCode, bool> heldKeys = new Dictionary<KeyCode, bool>();
+        Dictionary<KeyCode, Vector3> diffVectors = new Dictionary<KeyCode, Vector3>();
+        string[] frameData = inputSettingsString.Split(",");
+
+        heldKeys.Add(KeyCode.W, Convert.ToBoolean(Convert.ToInt32(frameData[0])));
+        heldKeys.Add(KeyCode.A, Convert.ToBoolean(Convert.ToInt32(frameData[3])));
+        heldKeys.Add(KeyCode.S, Convert.ToBoolean(Convert.ToInt32(frameData[6])));
+        heldKeys.Add(KeyCode.D, Convert.ToBoolean(Convert.ToInt32(frameData[9])));
+        heldKeys.Add(KeyCode.Z, Convert.ToBoolean(Convert.ToInt32(frameData[12])));
+        heldKeys.Add(KeyCode.X, Convert.ToBoolean(Convert.ToInt32(frameData[15])));
+        heldKeys.Add(KeyCode.C, Convert.ToBoolean(Convert.ToInt32(frameData[18])));
+
+        diffVectors.Add(KeyCode.W, new Vector3(float.Parse(frameData[1]), float.Parse(frameData[2]), 0.0f));
+        diffVectors.Add(KeyCode.A, new Vector3(float.Parse(frameData[4]), float.Parse(frameData[5]), 0.0f));
+        diffVectors.Add(KeyCode.S, new Vector3(float.Parse(frameData[7]), float.Parse(frameData[8]), 0.0f));
+        diffVectors.Add(KeyCode.D, new Vector3(float.Parse(frameData[10]), float.Parse(frameData[11]), 0.0f));
+        diffVectors.Add(KeyCode.Z, new Vector3(float.Parse(frameData[13]), float.Parse(frameData[14]), 0.0f));
+        diffVectors.Add(KeyCode.X, new Vector3(float.Parse(frameData[16]), float.Parse(frameData[17]), 0.0f));
+        diffVectors.Add(KeyCode.C, new Vector3(float.Parse(frameData[19]), float.Parse(frameData[20]), 0.0f));
+
+        return new FrameInputSettings(diffVectors, heldKeys);
+    }
+
     private void SetupReplay()
     {
         this.SetupBodyPartControllersForReplay();
         this.SetInitialTransforms();
-    }
+        }
 
     public void StartReplay()
-    { 
-    
+    {
+        StartCoroutine(this.SimulateReplay());
+    }
+
+    private IEnumerator SimulateReplay()
+    {
+        for (this._currentFrameInputSettingIndex = 0; this._currentFrameInputSettingIndex < this._frameInputSettings.Count; this._currentFrameInputSettingIndex++)
+        {
+            for (int i = 0; i < this._bodyPartControllers.Length; i++)
+            {
+                if (this._frameInputSettings[this._currentFrameInputSettingIndex].heldKeys[this._bodyPartControllers[i].targetKeycode] == true)
+                { 
+                    this._bodyPartControllers[i].SimulateReplay();
+                }
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     private void SetInitialTransforms()
@@ -126,11 +181,11 @@ public class ReplaySimulator : MonoBehaviour
 
     public float GetReplayNormalizedX(KeyCode targetKeyCode, float maxViewportDiff)
     {
-        return (this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].x / maxViewportDiff);
+        return Mathf.Abs(this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].x / maxViewportDiff);
     }
 
     public float GetReplayNormalizedY(KeyCode targetKeyCode, float maxViewportDiff)
     {
-        return (this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].y / maxViewportDiff);
+        return Mathf.Abs(this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].y / maxViewportDiff);
     }
 }

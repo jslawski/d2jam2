@@ -65,4 +65,14 @@ public class SpineController : BodyPartController
 
         return diffAmount;
     }
+
+    public override void SimulateReplay()
+    {
+        float xPosition = this.CalculateXPosition();
+        float xRotation = this.CalculateXRotation();
+        float zRotation = this.CalculateZRotation();
+
+        this.targetTransform.position = new Vector3(xPosition, this.targetTransform.position.y, this.targetTransform.position.z);
+        this.targetTransform.rotation = Quaternion.Euler(-xRotation, 0.0f, zRotation);
+    }
 }
