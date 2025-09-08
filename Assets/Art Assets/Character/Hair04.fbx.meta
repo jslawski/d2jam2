@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09f3c3b8a272d2f409ed488c6e2a055c
+guid: e83785688e90ebf4d85419e419d31b5b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: openPBR_shader1
-    second: {fileID: 2100000, guid: 72689bf52294dd3418f4eb8c79207d50, type: 2}
+      name: Hair
+    second: {fileID: 2100000, guid: 3c954bb423dc7744abf247b4452a189b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
