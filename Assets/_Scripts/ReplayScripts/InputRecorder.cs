@@ -63,7 +63,13 @@ public class InputRecorder : MonoBehaviour
 
         this._isRecording = true;
 
+        Invoke("TakeScreenshot", 5.0f);
         Invoke("StopRecording", 10.0f);
+    }
+
+    private void TakeScreenshot()
+    {
+        ScreenshotManager.instance.TakeImmediateScreenshot();
     }
 
     private void SetupVideoData()
