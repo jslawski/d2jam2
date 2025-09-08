@@ -20,6 +20,11 @@ public class InputRecorder : MonoBehaviour
 
     private bool _isRecording = false;
 
+    private VideoData _currentVideoData;
+
+    [SerializeField]
+    private GameObject _createMenu;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -47,6 +52,8 @@ public class InputRecorder : MonoBehaviour
     {
         RecordedData.CreateNewRecordedData(this._bodyPartControllers);
 
+        this.SetupVideoData();
+
         StopAllCoroutines();
 
         StartCoroutine(this.UpdateCoroutine());
@@ -57,6 +64,22 @@ public class InputRecorder : MonoBehaviour
         this._isRecording = true;
 
         Invoke("StopRecording", 10.0f);
+    }
+
+    private void SetupVideoData()
+    { 
+        this._currentVideoData = new VideoData();
+        this._currentVideoData.username = PlayerPrefs.GetString("username", "test");
+        this._currentVideoData.videoIndex = PlayerPrefs.GetInt("videoCount");
+        this._currentVideoData.backgroundIndex = BackgroundManager.instance.GetCurrentIndex();
+        this._currentVideoData.bgmIndex = MusicManager.instance.GetCurrentIndex();
+        this._currentVideoData.bgmSampleIndex = MusicManager.instance.GetStartingSample();
+        this._currentVideoData.hairIndex = PlayerPrefs.GetInt("hair");
+        this._currentVideoData.eyebrowsIndex = PlayerPrefs.GetInt("eyebrows");
+        this._currentVideoData.eyesIndex = PlayerPrefs.GetInt("eyes");
+        this._currentVideoData.noseIndex = PlayerPrefs.GetInt("nose");
+        this._currentVideoData.mouthIndex = PlayerPrefs.GetInt("mouth");
+        this._currentVideoData.bodyTextureIndex = PlayerPrefs.GetInt("body");
     }
 
     public void StopRecording()
@@ -70,6 +93,8 @@ public class InputRecorder : MonoBehaviour
         this._recordingText.text = "Recording File Saved at: " + Application.persistentDataPath;
 
         this._isRecording = false;
+
+        PlayerPrefs.SetInt("videoCount", this._currentVideoData.videoIndex + 1);
     }
 
     private IEnumerator UpdateCoroutine()
@@ -121,9 +146,26 @@ public class InputRecorder : MonoBehaviour
 
     private void UploadFileToDatabase()
     {
-        UploadReplayDataAsyncRequest replayDataRequest = new UploadReplayDataAsyncRequest(PlayerPrefs.GetString("username"), 0, RecordedData.GetReplayDataString());
+        UploadReplayDataAsyncRequest replayDataRequest = new UploadReplayDataAsyncRequest(PlayerPrefs.GetString("username", "test"), PlayerPrefs.GetInt("videoCount"), RecordedData.GetReplayDataString());
         replayDataRequest.Send();
 
-        //UploadVideoDataAsyncRequest videoDataRequest = new UploadVideoDataAsyncRequest()
+        UploadVideoDataAsyncRequest videoDataRequest = new UploadVideoDataAsyncRequest(this._currentVideoData, this.UploadSuccess, this.UploadFailure);
+        videoDataRequest.Send();
+    }
+
+    private void UploadSuccess(string data)
+    {
+        Invoke("ReturnToMenu", 1.0f);
+    }
+
+    private void ReturnToMenu()
+    {
+        MusicManager.instance.StopMusic();
+        this._createMenu.SetActive(false);
+    }
+
+    private void UploadFailure()
+    {
+        Debug.LogError("Failed to upload files");
     }
 }

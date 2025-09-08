@@ -13,15 +13,15 @@ public class UploadVideoDataAsyncRequest : AsyncRequest
         this.form = new WWWForm();
         this.form.AddField("username", videoData.username);
         this.form.AddField("videoIndex", videoData.videoIndex);
-        this.form.AddField("backgroundName", videoData.backgroundName);
-        this.form.AddField("bgmName", videoData.bgmName);
+        this.form.AddField("backgroundIndex", videoData.backgroundIndex);
+        this.form.AddField("bgmIndex", videoData.bgmIndex);
         this.form.AddField("bgmSampleIndex", videoData.bgmSampleIndex);
-        this.form.AddField("hairName", videoData.hairName);
-        this.form.AddField("eyebrowsName", videoData.eyebrowsName);
-        this.form.AddField("eyesName", videoData.eyesName);
-        this.form.AddField("noseName", videoData.noseName);
-        this.form.AddField("mouthName", videoData.mouthName);
-        this.form.AddField("bodyTextureName", videoData.bodyTextureName);
+        this.form.AddField("hairIndex", videoData.hairIndex);
+        this.form.AddField("eyebrowsIndex", videoData.eyebrowsIndex);
+        this.form.AddField("eyesIndex", videoData.eyesIndex);
+        this.form.AddField("noseIndex", videoData.noseIndex);
+        this.form.AddField("mouthIndex", videoData.mouthIndex);
+        this.form.AddField("bodyTextureIndex", videoData.bodyTextureIndex);
 
         this.SetupRequest(url, successCallback, failureCallback);
     }

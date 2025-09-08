@@ -1565,6 +1565,7 @@ MonoBehaviour:
   - {fileID: 1892518917}
   - {fileID: 134252161}
   _recordingText: {fileID: 465575160}
+  _createMenu: {fileID: 66378158}
 --- !u!4 &436126965
 Transform:
   m_ObjectHideFlags: 0
@@ -3061,7 +3062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &832575518
 MonoBehaviour:
   m_ObjectHideFlags: 0

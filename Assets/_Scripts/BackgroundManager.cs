@@ -59,4 +59,9 @@ public class BackgroundManager : MonoBehaviour
     {
         this._backgroundRenderer.material.mainTexture = this._randomBackgrounds[this._currentBackgroundIndex];
     }
+
+    public int GetCurrentIndex()
+    {
+        return this._currentBackgroundIndex;
+    }
 }

@@ -21,10 +21,10 @@ public class Timer : MonoBehaviour
         this._timerText = GetComponent<TextMeshProUGUI>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        this._timeLeft = 10.0f;
+        this._timerStarted = false;
     }
 
     // Update is called once per frame
@@ -52,10 +52,5 @@ public class Timer : MonoBehaviour
 
         this._timerText.text = "0s";
         this._endingAnimation.SetActive(true);
-
-        yield return new WaitForSeconds(1.0f);
-
-        this._createModeParent.SetActive(false);
-        MusicManager.instance.StopMusic();
     }
 }

@@ -79,4 +79,13 @@ public class MusicManager : MonoBehaviour
     {
         this._audioSource.Stop();
     }
+    public int GetCurrentIndex()
+    {
+        return this._currentTrackIndex;
+    }
+
+    public int GetStartingSample()
+    {
+        return this._audioSource.timeSamples;
+    }
 }

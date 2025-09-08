@@ -7,15 +7,15 @@ public class VideoData
     public string username;
     public int videoIndex;
     public int numLikes;
-    public string backgroundName;
-    public string bgmName;
+    public int backgroundIndex;
+    public int bgmIndex;
     public int bgmSampleIndex;
-    public string hairName;
-    public string eyebrowsName;
-    public string eyesName;
-    public string noseName;
-    public string mouthName;
-    public string bodyTextureName;
+    public int hairIndex;
+    public int eyebrowsIndex;
+    public int eyesIndex;
+    public int noseIndex;
+    public int mouthIndex;
+    public int bodyTextureIndex;
 }
 
 [Serializable]
