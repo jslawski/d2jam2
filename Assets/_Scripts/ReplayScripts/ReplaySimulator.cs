@@ -24,13 +24,23 @@ public class ReplaySimulator : MonoBehaviour
 
     public void SetupReplay(ReplayData replayData)
     {
-        this._replayData = replayData;    
+        this._replayData = replayData;
+        BackgroundManager.instance.SetBackgroundAtIndex(this._replayData.videoData.backgroundIndex);
+        MusicManager.instance.SetSongIndex(this._replayData.videoData.bgmIndex);
+        MusicManager.instance.SetSongSample(this._replayData.videoData.bgmSampleIndex);
         this.SetupBodyPartControllersForReplay();
         this.SetInitialTransforms();
     }
 
+    private void RestartReplay()
+    {
+        this.SetInitialTransforms();
+        this.StartReplay();
+    }
+
     public void StartReplay()
     {
+        MusicManager.instance.PlaySongAtIndexAndSample(this._replayData.videoData.bgmIndex, this._replayData.videoData.bgmSampleIndex);
         StartCoroutine(this.SimulateReplay());
     }
 
@@ -48,6 +58,8 @@ public class ReplaySimulator : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+
+        this.RestartReplay();
     }
 
     private void SetInitialTransforms()

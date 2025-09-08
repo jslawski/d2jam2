@@ -20,6 +20,9 @@ public class VideoCard : MonoBehaviour
 
     private ReplayData _replayData;
 
+    [SerializeField]
+    private GameObject _replayParent;
+
     private void Awake()
     {
         this._replayData = new ReplayData();
@@ -55,9 +58,9 @@ public class VideoCard : MonoBehaviour
 
     private void LoadReplayDataSuccess(string data)
     {        
-        File.WriteAllText(Application.persistentDataPath + "\\testFilename.txt", data, Encoding.UTF8);
+        File.WriteAllText(Application.persistentDataPath + "\\" + this._replayData.videoData.username + this._replayData.videoData.videoIndex + ".txt", data, Encoding.UTF8);
 
-        StreamReader fileReader = new StreamReader(Application.persistentDataPath + "\\testFilename.txt");
+        StreamReader fileReader = new StreamReader(Application.persistentDataPath + "\\" + this._replayData.videoData.username + this._replayData.videoData.videoIndex + ".txt");
 
         this._replayData.SetupReplayData(fileReader);        
     }
@@ -70,8 +73,6 @@ public class VideoCard : MonoBehaviour
     private IEnumerator RequestThumbnailTexture()
     {
         string url = ServerSecrets.ServerName + "d2jam2/thumbnails/" + PlayerPrefs.GetString("username", "test") + this._replayData.videoData.videoIndex.ToString() + ".png";
-
-        Debug.LogError("URL: " + url);
         
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
 
@@ -86,5 +87,12 @@ public class VideoCard : MonoBehaviour
             Texture2D downloadedTexture = DownloadHandlerTexture.GetContent(request);
             this._thumbnailImage.texture = downloadedTexture;
         }
+    }
+
+    public void ButtonClicked()
+    {
+        ReplaySimulator.instance.SetupReplay(this._replayData);
+        this._replayParent.SetActive(true);
+        ReplaySimulator.instance.StartReplay();
     }
 }

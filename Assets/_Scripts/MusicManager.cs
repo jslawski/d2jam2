@@ -66,6 +66,16 @@ public class MusicManager : MonoBehaviour
         this._audioSource.Play();
     }
 
+    public void SetSongIndex(int index)
+    {
+        this._currentTrackIndex = index;
+    }
+
+    public void SetSongSample(int startSample)
+    {
+        this._audioSource.timeSamples = startSample;
+    }
+
     public void PlaySongAtIndex(int index)
     {
         this._audioSource.Stop();
@@ -73,6 +83,17 @@ public class MusicManager : MonoBehaviour
         this._audioSource.clip = this._randomTracks[index];
 
         this._audioSource.Play();
+    }
+
+    public void PlaySongAtIndexAndSample(int index, int startSample)
+    {
+        this._audioSource.Stop();
+
+        this._audioSource.clip = this._randomTracks[index];
+
+        this._audioSource.Play();
+
+        this._audioSource.timeSamples = startSample;
     }
 
     public void StopMusic()
