@@ -4,44 +4,34 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class ReplaySimulator : MonoBehaviour
+public class ReplayData
 {
-    public static ReplaySimulator instance;    
+    public VideoData videoData;
 
-    private int _currentFrameInputSettingIndex;
+    public Dictionary<KeyCode, Vector3> initialPositions;
+    public Dictionary<KeyCode, Vector3> initialRotations;
+    public List<FrameInputSettings> frameInputSettings;
 
-    private BodyPartController[] _bodyPartControllers;
-
-    private Dictionary<KeyCode, Vector3> _initialPositions;
-    private Dictionary<KeyCode, Vector3> _initialRotations;
-    private List<FrameInputSettings> _frameInputSettings;
-
-    private void Awake()
+    public ReplayData()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        this.videoData = null;
 
-        this._initialPositions = new Dictionary<KeyCode, Vector3>();
-        this._initialRotations = new Dictionary<KeyCode, Vector3>();
-        this._frameInputSettings = new List<FrameInputSettings>();
+        this.initialPositions = new Dictionary<KeyCode, Vector3>();
+        this.initialRotations = new Dictionary<KeyCode, Vector3>();
+        this.frameInputSettings = new List<FrameInputSettings>();
     }
 
-    private void Update()
+    public ReplayData(ReplayData dataToCopy)
     {
-        if (Input.GetKeyUp(KeyCode.Return))
-        {                   
-            this.LoadReplayData();
-            this.SetupReplay();
-            this.StartReplay();
-        }
+        this.videoData = dataToCopy.videoData;
+
+        this.initialPositions = dataToCopy.initialPositions;
+        this.initialRotations = dataToCopy.initialRotations;
+        this.frameInputSettings = dataToCopy.frameInputSettings;
     }
 
-    private void LoadReplayData()
-    {
-        StreamReader fileReader = new StreamReader(Application.persistentDataPath + "\\testFilename.txt");
-
+    public void SetupReplayData(StreamReader fileReader)
+    { 
         this.LoadInitialPositions(fileReader);
         this.LoadInitialRotations(fileReader);
         this.LoadFrameInputSettings(fileReader);
@@ -60,13 +50,13 @@ public class ReplaySimulator : MonoBehaviour
         Vector3 hipsInitialPosition = new Vector3(float.Parse(initialPositionValues[15]), float.Parse(initialPositionValues[16]), float.Parse(initialPositionValues[17]));
         Vector3 leftLegInitialPosition = new Vector3(float.Parse(initialPositionValues[18]), float.Parse(initialPositionValues[19]), float.Parse(initialPositionValues[20]));
 
-        this._initialPositions.Add(KeyCode.W, headInitialPosition);
-        this._initialPositions.Add(KeyCode.A, rightArmInitialPosition);
-        this._initialPositions.Add(KeyCode.S, spineInitialPosition);
-        this._initialPositions.Add(KeyCode.D, leftArmInitialPosition);
-        this._initialPositions.Add(KeyCode.Z, rightLegInitialPosition);
-        this._initialPositions.Add(KeyCode.X, hipsInitialPosition);
-        this._initialPositions.Add(KeyCode.C, leftLegInitialPosition);
+        this.initialPositions.Add(KeyCode.W, headInitialPosition);
+        this.initialPositions.Add(KeyCode.A, rightArmInitialPosition);
+        this.initialPositions.Add(KeyCode.S, spineInitialPosition);
+        this.initialPositions.Add(KeyCode.D, leftArmInitialPosition);
+        this.initialPositions.Add(KeyCode.Z, rightLegInitialPosition);
+        this.initialPositions.Add(KeyCode.X, hipsInitialPosition);
+        this.initialPositions.Add(KeyCode.C, leftLegInitialPosition);
     }
 
     private void LoadInitialRotations(StreamReader fileReader)
@@ -82,13 +72,13 @@ public class ReplaySimulator : MonoBehaviour
         Vector3 hipsInitialRotation = new Vector3(float.Parse(initialRotationValues[15]), float.Parse(initialRotationValues[16]), float.Parse(initialRotationValues[17]));
         Vector3 leftLegInitialRotation = new Vector3(float.Parse(initialRotationValues[18]), float.Parse(initialRotationValues[19]), float.Parse(initialRotationValues[20]));
 
-        this._initialRotations.Add(KeyCode.W, headInitialRotation);
-        this._initialRotations.Add(KeyCode.A, rightArmInitialRotation);
-        this._initialRotations.Add(KeyCode.S, spineInitialRotation);
-        this._initialRotations.Add(KeyCode.D, leftArmInitialRotation);
-        this._initialRotations.Add(KeyCode.Z, rightLegInitialRotation);
-        this._initialRotations.Add(KeyCode.X, hipsInitialRotation);
-        this._initialRotations.Add(KeyCode.C, leftLegInitialRotation);
+        this.initialRotations.Add(KeyCode.W, headInitialRotation);
+        this.initialRotations.Add(KeyCode.A, rightArmInitialRotation);
+        this.initialRotations.Add(KeyCode.S, spineInitialRotation);
+        this.initialRotations.Add(KeyCode.D, leftArmInitialRotation);
+        this.initialRotations.Add(KeyCode.Z, rightLegInitialRotation);
+        this.initialRotations.Add(KeyCode.X, hipsInitialRotation);
+        this.initialRotations.Add(KeyCode.C, leftLegInitialRotation);
     }
 
     private void LoadFrameInputSettings(StreamReader fileReader)
@@ -96,7 +86,7 @@ public class ReplaySimulator : MonoBehaviour
         string readLine = string.Empty;
         while ((readLine = fileReader.ReadLine()) != null)
         {
-            this._frameInputSettings.Add(this.ParseInputSettingsString(readLine));
+            this.frameInputSettings.Add(this.ParseInputSettingsString(readLine));
         }
     }
 
@@ -123,65 +113,5 @@ public class ReplaySimulator : MonoBehaviour
         diffVectors.Add(KeyCode.C, new Vector3(float.Parse(frameData[19]), float.Parse(frameData[20]), 0.0f));
 
         return new FrameInputSettings(diffVectors, heldKeys);
-    }
-
-    private void SetupReplay()
-    {
-        this.SetupBodyPartControllersForReplay();
-        this.SetInitialTransforms();
-        }
-
-    public void StartReplay()
-    {
-        StartCoroutine(this.SimulateReplay());
-    }
-
-    private IEnumerator SimulateReplay()
-    {
-        for (this._currentFrameInputSettingIndex = 0; this._currentFrameInputSettingIndex < this._frameInputSettings.Count; this._currentFrameInputSettingIndex++)
-        {
-            for (int i = 0; i < this._bodyPartControllers.Length; i++)
-            {
-                if (this._frameInputSettings[this._currentFrameInputSettingIndex].heldKeys[this._bodyPartControllers[i].targetKeycode] == true)
-                { 
-                    this._bodyPartControllers[i].SimulateReplay();
-                }
-            }
-
-            yield return new WaitForFixedUpdate();
-        }
-    }
-
-    private void SetInitialTransforms()
-    {
-        for (int i = 0; i < this._bodyPartControllers.Length; i++)
-        {
-            this._bodyPartControllers[i].SetInitialTransform(this._initialPositions[this._bodyPartControllers[i].targetKeycode], this._initialRotations[this._bodyPartControllers[i].targetKeycode]);
-        }
-    }
-
-    private void SetupBodyPartControllersForReplay()
-    {
-        this._bodyPartControllers = GetComponentsInChildren<BodyPartController>();
-
-        for (int i = 0; i < this._bodyPartControllers.Length; i++)
-        {
-            this._bodyPartControllers[i].isReplay = true;
-        }
-    }
-
-    public Vector3 GetReplayDiffVector(KeyCode targetKeyCode)
-    {
-        return this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode];
-    }
-
-    public float GetReplayNormalizedX(KeyCode targetKeyCode, float maxViewportDiff)
-    {
-        return Mathf.Abs(this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].x / maxViewportDiff);
-    }
-
-    public float GetReplayNormalizedY(KeyCode targetKeyCode, float maxViewportDiff)
-    {
-        return Mathf.Abs(this._frameInputSettings[this._currentFrameInputSettingIndex].diffVectors[targetKeyCode].y / maxViewportDiff);
     }
 }
