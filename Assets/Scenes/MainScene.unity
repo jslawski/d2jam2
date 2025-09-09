@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -535,6 +535,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -728,6 +733,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -856,6 +866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -986,6 +1001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -1053,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1186,7 +1206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1698,7 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2136,6 +2156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -2203,7 +2228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3056,6 +3081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -3187,7 +3217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3382,6 +3412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -3511,6 +3546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -3639,6 +3679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -3939,6 +3984,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -4142,6 +4192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -4490,7 +4545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4833,6 +4888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -5033,7 +5093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5227,6 +5287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -5822,7 +5887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6016,6 +6081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -6249,6 +6319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -7274,6 +7349,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -7485,7 +7565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7679,6 +7759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -7997,7 +8082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -8130,7 +8215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -8660,6 +8745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCard (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
@@ -9315,6 +9405,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -9382,7 +9477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -9607,7 +9702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -9844,7 +9939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -10069,7 +10164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -10407,6 +10502,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoCard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5603738114193646108, guid: 382791b0881a4924db8c93882be88425,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8444162531545521937, guid: 382791b0881a4924db8c93882be88425,
         type: 3}
       propertyPath: _replayParent
@@ -10672,6 +10772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pageIncrementButton: {fileID: 400357820}
   _pageDecrementButton: {fileID: 54361646}
+  _category: 0
 --- !u!1 &2082769851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,7 +11063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

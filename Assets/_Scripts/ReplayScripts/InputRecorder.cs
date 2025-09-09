@@ -172,6 +172,9 @@ public class InputRecorder : MonoBehaviour
 
     private void UploadFailure()
     {
-        Debug.LogError("Failed to upload files");
+        MusicManager.instance.StopMusic();
+        this._createMenu.SetActive(false);
+        CommunityTabManager.instance.LoadMyVideos();
+        MusicManager.instance.PlayMenuMusic();
     }
 }

@@ -72,11 +72,12 @@ public class ReplaySimulator : MonoBehaviour
     public void StartReplay()
     {
         MusicManager.instance.PlaySongAtIndexAndSample(this._replayData.videoData.bgmIndex, this._replayData.videoData.bgmSampleIndex);
+        StopAllCoroutines();
         StartCoroutine(this.SimulateReplay());
     }
 
     private IEnumerator SimulateReplay()
-    {
+    {    
         for (this._currentFrameInputSettingIndex = 0; this._currentFrameInputSettingIndex < this._replayData.frameInputSettings.Count; this._currentFrameInputSettingIndex++)
         {
             for (int i = 0; i < this._bodyPartControllers.Length; i++)
